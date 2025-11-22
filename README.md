@@ -250,12 +250,45 @@ npx @deepsweepai/auditor audit --url http://localhost:8000
 
 ## 📊 Privacy & Telemetry
 
-DeepSweep.ai Auditor collects **anonymous usage data** to improve detection:
+DeepSweep.ai Auditor collects **opt-in usage data** to improve detection and provide security monitoring:
 
-- ✅ **Collected:** Risk scores, finding counts, compliance status
-- ❌ **Never collected:** URLs, prompts, memory content, user data
-- 🔒 **Security:** Encrypted transport, no PII
+- ✅ **Collected:** Risk scores, finding counts, compliance status, audit metadata
+- ❌ **Never collected:** MCP server URLs, prompts, memory content, user data, PII
+- 🔒 **Security:** Encrypted HTTPS transport, API key authentication, policy-based monitoring
 - 🚪 **Opt-out:** `--no-telemetry` or `DEEPSWEEP_TELEMETRY=off`
+
+### DeepSweep API Integration
+
+To enable telemetry with the DeepSweep platform:
+
+1. **Get your API key** from the [DeepSweep Dashboard](https://deepsweep.ai/dashboard)
+
+2. **Set the API key** as an environment variable:
+
+```bash
+export DEEPSWEEP_API_KEY=ds_prod_a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
+```
+
+3. **Run the auditor** (telemetry is enabled by default with a valid API key):
+
+```bash
+npx @deepsweepai/auditor audit --demo
+```
+
+The auditor will send anonymized telemetry events to `api.deepsweep.ai` for:
+- Real-time security monitoring
+- Policy evaluation (PII detection, prompt injection, blocked APIs)
+- Usage analytics and improvements
+
+**API Key Formats:**
+- Production: `ds_prod_*`
+- Business: `ds_biz_*`
+- Free tier: `ds_free_*`
+
+**Environment Variables:**
+- `DEEPSWEEP_API_KEY` - Your DeepSweep API key
+- `DEEPSWEEP_API_URL` - API base URL (default: `https://api.deepsweep.ai`)
+- `DEEPSWEEP_TELEMETRY` - Set to `off` or `false` to disable
 
 [Privacy Policy](https://deepsweep.ai/privacy)
 
