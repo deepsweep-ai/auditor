@@ -2,6 +2,16 @@ import { writeFile } from 'fs/promises';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import type { AuditReport } from '../types/index.js';
 
+// Sanitize text for PDF - replace characters not supported by WinAnsi encoding
+function sanitizeForPDF(text: string): string {
+  return text
+    .replace(/→/g, '->')
+    .replace(/✓/g, 'OK')
+    .replace(/✗/g, 'X')
+    .replace(/•/g, '*')
+    .replace(/[^\x00-\xFF]/g, ''); // Remove any non-Latin1 characters
+}
+
 export async function generatePDFReport(
   report: AuditReport,
   outputPath: string
@@ -15,6 +25,7 @@ export async function generatePDFReport(
   let yPosition = height - 50;
 
   const drawText = (text: string, options: any = {}) => {
+    text = sanitizeForPDF(text);
     const {
       font = timesRomanFont,
       size = 12,
