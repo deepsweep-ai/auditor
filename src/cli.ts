@@ -15,7 +15,7 @@ import type { MCPServerConfig } from './types/index.js';
 const program = new Command();
 
 program
-  .name('deepsweepai')
+  .name('dsauditor')
   .description('DeepSweep.ai Auditor - MCP Server Security Scanner')
   .version('0.1.0');
 
@@ -111,10 +111,10 @@ program
         if (!config.url && !config.file && !config.docker) {
           console.error('❌ Error: Must provide --url, --file, or --docker');
           console.log('\nExamples:');
-          console.log('  deepsweepai audit --url http://localhost:8000');
-          console.log('  deepsweepai audit --file session.json');
-          console.log('  deepsweepai audit --docker');
-          console.log('  deepsweepai audit --demo');
+          console.log('  dsauditor audit --url http://localhost:8000');
+          console.log('  dsauditor audit --file session.json');
+          console.log('  dsauditor audit --docker');
+          console.log('  dsauditor audit --demo');
           process.exit(1);
         }
 

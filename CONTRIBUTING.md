@@ -65,6 +65,10 @@ We welcome suggestions for new features or improvements! Please open an issue wi
    - Reference any related issues
    - Include screenshots/examples if applicable
 
+## CLI Command
+
+The package provides the `dsauditor` command when installed via npm or npx.
+
 ## Development Guidelines
 
 ### Code Style
