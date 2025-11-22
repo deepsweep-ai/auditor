@@ -1,6 +1,6 @@
 # DeepSweep Auditor
 
-[![npm version](https://img.shields.io/npm/v/@deepsweep/auditor.svg)](https://www.npmjs.com/package/@deepsweep/auditor)
+[![npm version](https://img.shields.io/npm/v/@deepsweepai/auditor.svg)](https://www.npmjs.com/package/@deepsweepai/auditor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Node.js >= 18](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
 
@@ -9,7 +9,7 @@
 > "We Audited 50 Public MCP Servers. 94% Are Critically Vulnerable to Memory Poisoning."
 
 ```bash
-npx @deepsweep/auditor audit --demo
+npx @deepsweepai/auditor audit --demo
 ```
 
 ## Why DeepSweep Auditor?
@@ -23,7 +23,7 @@ npx @deepsweep/auditor audit --demo
 ### Zero-Install Demo (Try it now!)
 
 ```bash
-npx @deepsweep/auditor audit --demo
+npx @deepsweepai/auditor audit --demo
 ```
 
 This runs against a known-vulnerable MCP server and shows you exactly what vulnerabilities look like.
@@ -32,23 +32,23 @@ This runs against a known-vulnerable MCP server and shows you exactly what vulne
 
 ```bash
 # Remote MCP server
-npx @deepsweep/auditor audit --url http://localhost:8000
+npx @deepsweepai/auditor audit --url http://localhost:8000
 
 # WebSocket MCP server
-npx @deepsweep/auditor audit --url ws://localhost:8000
+npx @deepsweepai/auditor audit --url ws://localhost:8000
 
 # Session replay file
-npx @deepsweep/auditor audit --file session.json
+npx @deepsweepai/auditor audit --file session.json
 
 # Auto-detect local MCP servers
-npx @deepsweep/auditor audit --docker
+npx @deepsweepai/auditor audit --docker
 ```
 
 ### With Authentication
 
 ```bash
-npx @deepsweep/auditor audit --url https://mcp.example.com --api-key YOUR_KEY
-npx @deepsweep/auditor audit --url https://mcp.example.com --bearer-token YOUR_TOKEN
+npx @deepsweepai/auditor audit --url https://mcp.example.com --api-key YOUR_KEY
+npx @deepsweepai/auditor audit --url https://mcp.example.com --bearer-token YOUR_TOKEN
 ```
 
 ## 📊 Example Output
@@ -158,7 +158,7 @@ Machine-readable report for CI/CD integration:
 Beautiful, shareable report for security teams:
 
 ```bash
-npx @deepsweep/auditor audit --url http://localhost:8000 --html
+npx @deepsweepai/auditor audit --url http://localhost:8000 --html
 ```
 
 ### PDF Report (`audit-report.pdf`)
@@ -166,7 +166,7 @@ npx @deepsweep/auditor audit --url http://localhost:8000 --html
 Professional audit report for compliance:
 
 ```bash
-npx @deepsweep/auditor audit --url http://localhost:8000 --pdf
+npx @deepsweepai/auditor audit --url http://localhost:8000 --pdf
 ```
 
 ### Share Report (Anonymized)
@@ -174,7 +174,7 @@ npx @deepsweep/auditor audit --url http://localhost:8000 --pdf
 Upload anonymized report and get shareable link:
 
 ```bash
-npx @deepsweep/auditor audit --url http://localhost:8000 --share
+npx @deepsweepai/auditor audit --url http://localhost:8000 --share
 # ✅ Report shared: https://deepsweep.ai/share/audit_1732219801000
 ```
 
@@ -230,7 +230,7 @@ jobs:
         run: docker-compose up -d mcp-server
 
       - name: Run DeepSweep Audit
-        run: npx @deepsweep/auditor audit --url http://localhost:8000 --json
+        run: npx @deepsweepai/auditor audit --url http://localhost:8000 --json
 
       - name: Upload Report
         uses: actions/upload-artifact@v3
@@ -242,7 +242,7 @@ jobs:
 ### Fail Build on Critical Findings
 
 ```bash
-npx @deepsweep/auditor audit --url http://localhost:8000
+npx @deepsweepai/auditor audit --url http://localhost:8000
 # Exit code 1 if critical findings detected
 ```
 
@@ -291,7 +291,7 @@ DeepSweep Auditor collects **anonymous usage data** to improve detection:
 **TL;DR:** We built a free CLI tool that finds memory poisoning in MCP servers in <30 seconds. Try it now:
 
 ```bash
-npx @deepsweep/auditor audit --demo
+npx @deepsweepai/auditor audit --demo
 ```
 
 **The Problem:**
@@ -317,7 +317,7 @@ DeepSweep Auditor is a free, open-source CLI that audits any MCP server in <30 s
 **Try it now:**
 
 ```bash
-npx @deepsweep/auditor audit --demo
+npx @deepsweepai/auditor audit --demo
 ```
 
 ---
@@ -343,7 +343,7 @@ MIT License - see [LICENSE](LICENSE)
 - **Homepage:** [https://deepsweep.ai](https://deepsweep.ai)
 - **Repository:** [https://github.com/deepsweep-ai/auditor](https://github.com/deepsweep-ai/auditor)
 - **Issues:** [https://github.com/deepsweep-ai/auditor/issues](https://github.com/deepsweep-ai/auditor/issues)
-- **NPM:** [@deepsweep/auditor](https://www.npmjs.com/package/@deepsweep/auditor)
+- **NPM:** [@deepsweepai/auditor](https://www.npmjs.com/package/@deepsweepai/auditor)
 - **Discord:** [Join Community](https://discord.gg/Db5Zth2RKR)
 
 ---
