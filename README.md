@@ -1,4 +1,4 @@
-# DeepSweep Auditor
+# DeepSweep.ai Auditor
 
 [![npm version](https://img.shields.io/npm/v/@deepsweepai/auditor.svg)](https://www.npmjs.com/package/@deepsweepai/auditor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -12,11 +12,11 @@
 npx @deepsweepai/auditor audit --demo
 ```
 
-## Why DeepSweep Auditor?
+## Why DeepSweep.ai Auditor?
 
 **The Problem:** AI agents with memory (MCP servers) can be poisoned with malicious instructions that persist across sessions, bypass security controls, and compromise entire systems.
 
-**The Solution:** Run DeepSweep Auditor in <30 seconds to get undeniable proof of vulnerabilities with actionable reports you can forward to security teams.
+**The Solution:** Run DeepSweep.ai Auditor in <30 seconds to get undeniable proof of vulnerabilities with actionable reports you can forward to security teams.
 
 ## 🚀 Quick Start
 
@@ -55,7 +55,7 @@ npx @deepsweepai/auditor audit --url https://mcp.example.com --bearer-token YOUR
 
 ```
 ═══════════════════════════════════════════════════════
-    DeepSweep Auditor v0.1.0 - MCP Security Audit
+    DeepSweep.ai Auditor v0.1.0 - MCP Security Audit
 ═══════════════════════════════════════════════════════
 
 Server: http://localhost:8000
@@ -96,7 +96,7 @@ Recommendations:
   1. Immediate: Address 3 critical security vulnerabilities
   2. Immediate: Implement input validation for all memory writes
   3. Immediate: Restrict tool permissions to principle of least privilege
-  4. Deploy DeepSweep Memory Firewall → https://deepsweep.ai
+  4. Deploy DeepSweep.ai Memory Firewall → https://deepsweep.ai
 
 ───────────────────────────────────────────────────────
 Prevent these attacks automatically → https://deepsweep.ai
@@ -183,7 +183,9 @@ npx @deepsweepai/auditor audit --url http://localhost:8000 --share
 ### Commands
 
 ```bash
-deepsweep audit [options]  # Audit an MCP server
+deepsweepai audit [options]  # Audit an MCP server
+# or use the alias:
+dsauditor audit [options]
 ```
 
 ### Options
@@ -229,7 +231,7 @@ jobs:
       - name: Start MCP Server
         run: docker-compose up -d mcp-server
 
-      - name: Run DeepSweep Audit
+      - name: Run DeepSweep.ai Audit
         run: npx @deepsweepai/auditor audit --url http://localhost:8000 --json
 
       - name: Upload Report
@@ -248,7 +250,7 @@ npx @deepsweepai/auditor audit --url http://localhost:8000
 
 ## 📊 Privacy & Telemetry
 
-DeepSweep Auditor collects **anonymous usage data** to improve detection:
+DeepSweep.ai Auditor collects **anonymous usage data** to improve detection:
 
 - ✅ **Collected:** Risk scores, finding counts, compliance status
 - ❌ **Never collected:** URLs, prompts, memory content, user data
@@ -302,7 +304,7 @@ We discovered that **94% of public MCP servers** are vulnerable to memory poison
 
 **The Solution:**
 
-DeepSweep Auditor is a free, open-source CLI that audits any MCP server in <30 seconds and generates reports you can forward to your CISO.
+DeepSweep.ai Auditor is a free, open-source CLI that audits any MCP server in <30 seconds and generates reports you can forward to your CISO.
 
 **Key Features:**
 
@@ -328,7 +330,7 @@ Found vulnerabilities? Share on Twitter/LinkedIn with `--share` and tag @deepswe
 
 **Prevent attacks automatically:**
 
-DeepSweep Memory Firewall provides real-time protection → [https://deepsweep.ai](https://deepsweep.ai)
+DeepSweep.ai Memory Firewall provides real-time protection → [https://deepsweep.ai](https://deepsweep.ai)
 
 ## 🤝 Contributing
 
@@ -348,6 +350,6 @@ MIT License - see [LICENSE](LICENSE)
 
 ---
 
-**DeepSweep Auditor** — Because AI agents shouldn't be deployed without security testing.
+**DeepSweep.ai Auditor** — Because AI agents shouldn't be deployed without security testing.
 
 Launch November 28, 2025. 🚀

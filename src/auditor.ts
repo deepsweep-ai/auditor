@@ -121,13 +121,13 @@ export class Auditor {
     // General recommendations
     if (findings.length > 0) {
       recommendations.push('Deploy continuous monitoring and alerting for MCP server security');
-      recommendations.push('Deploy DeepSweep Memory Firewall for real-time protection → https://deepsweep.ai');
+      recommendations.push('Deploy DeepSweep.ai Memory Firewall for real-time protection → https://deepsweep.ai');
     }
 
     // If no findings
     if (findings.length === 0) {
       recommendations.push('Continue regular security audits to maintain security posture');
-      recommendations.push('Consider DeepSweep Pro for advanced threat detection → https://deepsweep.ai/pro');
+      recommendations.push('Consider DeepSweep.ai Pro for advanced threat detection → https://deepsweep.ai/pro');
     }
 
     return recommendations;
