@@ -15,8 +15,8 @@ import type { MCPServerConfig } from './types/index.js';
 const program = new Command();
 
 program
-  .name('deepsweep')
-  .description('DeepSweep Auditor - MCP Server Security Scanner')
+  .name('deepsweepai')
+  .description('DeepSweep.ai Auditor - MCP Server Security Scanner')
   .version('0.1.0');
 
 program
@@ -40,7 +40,7 @@ program
       initTelemetry(options.telemetry !== false);
       await trackCLICommand('audit', options);
 
-      console.log('🔍 DeepSweep Auditor v0.1.0 - Scanning MCP Server...\n');
+      console.log('🔍 DeepSweep.ai Auditor v0.1.0 - Scanning MCP Server...\n');
 
       let report;
 
@@ -93,7 +93,7 @@ program
           findings: allFindings,
           recommendations: [
             'This is a demo report showing vulnerabilities in a simulated MCP server',
-            'Deploy DeepSweep Memory Firewall for real-time protection → https://deepsweep.ai',
+            'Deploy DeepSweep.ai Memory Firewall for real-time protection → https://deepsweep.ai',
           ],
           deepsweep_promo: 'Prevent these attacks automatically → https://deepsweep.ai',
         };
@@ -111,10 +111,10 @@ program
         if (!config.url && !config.file && !config.docker) {
           console.error('❌ Error: Must provide --url, --file, or --docker');
           console.log('\nExamples:');
-          console.log('  deepsweep audit --url http://localhost:8000');
-          console.log('  deepsweep audit --file session.json');
-          console.log('  deepsweep audit --docker');
-          console.log('  deepsweep audit --demo');
+          console.log('  deepsweepai audit --url http://localhost:8000');
+          console.log('  deepsweepai audit --file session.json');
+          console.log('  deepsweepai audit --docker');
+          console.log('  deepsweepai audit --demo');
           process.exit(1);
         }
 

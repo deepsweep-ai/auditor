@@ -6,8 +6,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "deepsweep": "./dist/cli.js",
-    "deepsweep-auditor": "./dist/cli.js"
+    "deepsweepai": "./dist/cli.js",
+    "deepsweepai-auditor": "./dist/cli.js"
   },
   "exports": {
     ".": {

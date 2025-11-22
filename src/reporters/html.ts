@@ -8,7 +8,7 @@ const HTML_TEMPLATE = `
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeepSweep Audit Report - {{audit_id}}</title>
+    <title>DeepSweep.ai Audit Report - {{audit_id}}</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -175,7 +175,7 @@ const HTML_TEMPLATE = `
 <body>
     <div class="container">
         <div class="header">
-            <h1>DeepSweep Auditor Report</h1>
+            <h1>DeepSweep.ai Auditor Report</h1>
             <p>MCP Server Security Audit</p>
         </div>
 
@@ -260,7 +260,7 @@ const HTML_TEMPLATE = `
 
         <div class="footer">
             <p><strong>{{deepsweep_promo}}</strong></p>
-            <a href="https://deepsweep.ai" class="cta">Get DeepSweep Protection</a>
+            <a href="https://deepsweep.ai" class="cta">Get DeepSweep.ai Protection</a>
         </div>
     </div>
 </body>

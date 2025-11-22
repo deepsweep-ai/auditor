@@ -33,7 +33,7 @@ export async function generatePDFReport(
   };
 
   // Title
-  drawText('DeepSweep Auditor Report', { font: timesRomanBold, size: 24, color: rgb(0.4, 0.4, 0.7) });
+  drawText('DeepSweep.ai Auditor Report', { font: timesRomanBold, size: 24, color: rgb(0.4, 0.4, 0.7) });
   drawText('MCP Server Security Audit', { size: 14, color: rgb(0.5, 0.5, 0.5) });
   yPosition -= 10;
 
