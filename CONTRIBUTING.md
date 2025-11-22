@@ -65,9 +65,10 @@ We welcome suggestions for new features or improvements! Please open an issue wi
    - Reference any related issues
    - Include screenshots/examples if applicable
 
-## CLI Command
+## CLI Commands
 
-The package provides the `dsauditor` command when installed via npm or npx.
+The package provides the `deepsweepai` command when installed via npm or npx.
+A convenience alias `dsauditor` is also available.
 
 ## Development Guidelines
 

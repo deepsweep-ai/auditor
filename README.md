@@ -183,7 +183,9 @@ npx @deepsweepai/auditor audit --url http://localhost:8000 --share
 ### Commands
 
 ```bash
-dsauditor audit [options]  # Audit an MCP server
+deepsweepai audit [options]  # Audit an MCP server
+# or use the alias:
+dsauditor audit [options]
 ```
 
 ### Options
