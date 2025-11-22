@@ -10,7 +10,7 @@ export class RecursiveInstructionsDetector implements Detector {
 
     const recursivePatterns = [
       /repeat\s+this\s+(instruction|prompt|message)/i,
-      /ignore\s+previous\s+(instruction|prompt|command)/i,
+      /ignore\s+(all\s+)?previous\s+(instructions?|prompts?|commands?)/i,
       /forget\s+(everything|all|previous)/i,
       /new\s+(instruction|prompt|command):/i,
       /override\s+(system|previous)/i,
