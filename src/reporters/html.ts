@@ -171,8 +171,51 @@ const HTML_TEMPLATE = `
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
     </style>
+
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLEYLBCSB9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        // Configure GA4 with custom dimensions
+        gtag('config', 'G-JLEYLBCSB9', {
+            'custom_map': {
+                'dimension1': 'risk_level',
+                'dimension2': 'findings_count',
+                'dimension3': 'report_source'
+            }
+        });
+
+        // Track report viewed event
+        gtag('event', 'report_viewed', {
+            'risk_level': '{{overall_risk}}',
+            'findings_count': {{findings_count}},
+            'critical_findings': {{critical_findings}},
+            'report_source': 'html_export'
+        });
+    </script>
 </head>
 <body>
+    <!-- CTA Click Tracking -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track CTA button clicks
+            const ctaButton = document.querySelector('.footer .cta');
+            if (ctaButton) {
+                ctaButton.addEventListener('click', function(e) {
+                    gtag('event', 'cta_click', {
+                        'risk_level': '{{overall_risk}}',
+                        'button_text': e.target.innerText,
+                        'destination_url': e.target.href,
+                        'event_category': 'conversion',
+                        'event_label': 'firewall_cta'
+                    });
+                });
+            }
+        });
+    </script>
     <div class="container">
         <div class="header">
             <h1>DeepSweep.ai Auditor Report</h1>
