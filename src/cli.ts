@@ -139,11 +139,13 @@ program
       }
 
       // Generate HTML report
+      let htmlGenerated = false;
       if (options.html || (!options.json && !options.pdf)) {
         // Default to HTML if no format specified
         const htmlPath = join(outputDir, 'audit-report.html');
         await generateHTMLReport(report, htmlPath);
         console.log(`📄 HTML report saved: ${htmlPath}`);
+        htmlGenerated = true;
       }
 
       // Generate PDF report
@@ -159,6 +161,24 @@ program
         const shareUrl = await shareReport(report);
         console.log(`✅ Report shared: ${shareUrl}`);
       }
+
+      // Next steps guidance
+      console.log('\n📋 Next Steps:');
+      if (htmlGenerated) {
+        console.log('   1. Open audit-report.html in your browser to view the detailed report');
+      }
+
+      if (report.overall_risk === 'CRITICAL' || report.critical_findings > 0) {
+        console.log('   2. Address critical vulnerabilities before production deployment');
+        console.log('   3. Get real-time protection → https://platform.deepsweep.ai?ref=cli-nextsteps');
+        console.log('      • Stop attacks before they happen');
+        console.log('      • Continuous monitoring across all AI agents');
+        console.log('      • Get API key for dashboard integration');
+      } else {
+        console.log('   2. Run regular security audits to maintain security posture');
+        console.log('   3. Consider continuous monitoring → https://platform.deepsweep.ai?ref=cli-nextsteps');
+      }
+      console.log('');
 
       // Exit with appropriate code
       const exitCode = report.overall_risk === 'CRITICAL' || report.critical_findings > 0 ? 1 : 0;

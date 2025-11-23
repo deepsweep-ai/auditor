@@ -54,6 +54,30 @@ npx @deepsweepai/auditor audit --url https://mcp.example.com --api-key YOUR_KEY
 npx @deepsweepai/auditor audit --url https://mcp.example.com --bearer-token YOUR_TOKEN
 ```
 
+## 🎯 User Journey
+
+**1. Run Audit (30 seconds)**
+```bash
+npx @deepsweepai/auditor audit --demo
+```
+
+**2. View Detailed Report**
+- Open `audit-report.html` in your browser
+- Review findings, risk scores, and compliance status
+- Forward to security teams or CISOs
+
+**3. Get Continuous Protection** _(Recommended for Critical/High Risk)_
+- Visit [DeepSweep Platform](https://platform.deepsweep.ai)
+- Sign up for free trial
+- Deploy real-time memory firewall across all AI agents
+
+**4. Dashboard Integration** _(Optional)_
+- Get API key from [Platform Dashboard](https://platform.deepsweep.ai)
+- Set `DEEPSWEEP_API_KEY` environment variable
+- View audit history, team collaboration, custom policies
+
+**All security detection runs locally. No API key required for audits.**
+
 ## 📊 Example Output
 
 ```
