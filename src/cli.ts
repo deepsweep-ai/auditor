@@ -93,9 +93,9 @@ program
           findings: allFindings,
           recommendations: [
             'This is a demo report showing vulnerabilities in a simulated MCP server',
-            `Deploy DeepSweep Memory Firewall for real-time protection across any AI framework → https://deepsweep.ai/firewall?ref=cli&risk=${overallRisk.toLowerCase()}&findings=${criticalCount}&source=demo`,
+            `Deploy DeepSweep Platform for real-time protection across any AI framework → https://platform.deepsweep.ai?ref=cli&risk=${overallRisk.toLowerCase()}&findings=${criticalCount}&source=demo`,
           ],
-          deepsweep_promo: `Prevent these attacks automatically → https://deepsweep.ai/firewall?ref=cli&risk=${overallRisk.toLowerCase()}&source=demo`,
+          deepsweep_promo: `Prevent these attacks automatically → https://platform.deepsweep.ai?ref=cli&risk=${overallRisk.toLowerCase()}&source=demo`,
         };
       } else {
         // Normal audit mode

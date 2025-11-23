@@ -93,7 +93,7 @@ export function generateConsoleReport(report: AuditReport): string {
     lines.push(chalk.bold('🛡️  Stop attacks before they happen with DeepSweep Memory Firewall'));
     lines.push(chalk.gray('   Real-time protection • Universal AI framework support • Deploy in minutes'));
     lines.push('');
-    lines.push(chalk.cyan(`   Start free trial → https://deepsweep.ai/firewall?ref=cli&risk=${riskLevel}&findings=${criticalCount}`));
+    lines.push(chalk.cyan(`   Start free trial → https://platform.deepsweep.ai?ref=cli&risk=${riskLevel}&findings=${criticalCount}`));
     lines.push('');
     lines.push(chalk.gray('   Trusted by US security teams protecting production AI agents • Built in America'));
   } else {
@@ -101,7 +101,7 @@ export function generateConsoleReport(report: AuditReport): string {
     lines.push(chalk.bold('🛡️  Prevent these attacks with DeepSweep Memory Firewall'));
     lines.push(chalk.gray('   US-based AI security • Universal framework support • Enterprise-grade protection'));
     lines.push('');
-    lines.push(chalk.cyan(`   Learn more → https://deepsweep.ai/firewall?ref=cli&risk=${riskLevel}`));
+    lines.push(chalk.cyan(`   Learn more → https://platform.deepsweep.ai?ref=cli&risk=${riskLevel}`));
   }
 
   lines.push(chalk.bold.cyan('───────────────────────────────────────────────────────'));

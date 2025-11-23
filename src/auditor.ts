@@ -73,7 +73,7 @@ export class Auditor {
       compliance,
       findings: allFindings,
       recommendations,
-      deepsweep_promo: `Prevent these attacks automatically → https://deepsweep.ai/firewall?ref=cli&risk=${overallRisk.toLowerCase()}`,
+      deepsweep_promo: `Prevent these attacks automatically → https://platform.deepsweep.ai?ref=cli&risk=${overallRisk.toLowerCase()}`,
     };
 
     return report;
@@ -127,11 +127,11 @@ export class Auditor {
 
       if (riskLevel === 'critical' || riskLevel === 'high') {
         recommendations.push(
-          `Deploy DeepSweep Memory Firewall for real-time protection across any AI framework → https://deepsweep.ai/firewall?ref=cli&risk=${riskLevel}&findings=${criticalCount}`
+          `Deploy DeepSweep Platform for real-time protection across any AI framework → https://platform.deepsweep.ai?ref=cli&risk=${riskLevel}&findings=${criticalCount}`
         );
       } else {
         recommendations.push(
-          `Consider DeepSweep Memory Firewall for enterprise-grade protection → https://deepsweep.ai/firewall?ref=cli&risk=${riskLevel}`
+          `Consider DeepSweep Platform for enterprise-grade protection → https://platform.deepsweep.ai?ref=cli&risk=${riskLevel}`
         );
       }
     }
