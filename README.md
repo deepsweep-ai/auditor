@@ -282,7 +282,7 @@ npx @deepsweepai/auditor audit --url http://localhost:8000
 
 ### Enable Dashboard Integration (Optional)
 
-1. **Get your API key** from the [DeepSweep Dashboard](https://deepsweep.ai/dashboard)
+1. **Get your API key** from the [DeepSweep Dashboard](https://app.deepsweep.ai)
 
 2. **Set the API key** as an environment variable:
 
@@ -295,7 +295,7 @@ export DEEPSWEEP_API_KEY=ds_prod_a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
 ```bash
 npx @deepsweepai/auditor audit --demo
 # → Same local detection + results stored in dashboard
-# → 📊 View audit in DeepSweep Dashboard: https://platform.deepsweep.ai/audits/abc123
+# → 📊 View audit in DeepSweep Dashboard: https://app.deepsweep.ai/audits/abc123
 ```
 
 **API Key Formats:**

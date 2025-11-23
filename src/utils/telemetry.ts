@@ -117,7 +117,7 @@ export function initTelemetry(enabled: boolean = true): void {
     } else if (DEEPSWEEP_API_KEY) {
       // User provided API key but it's invalid - show warning
       console.warn('⚠️  Invalid DeepSweep API key format. Expected: ds_prod_*, ds_biz_*, or ds_free_*');
-      console.warn('   Dashboard features disabled. Get your API key at: https://deepsweep.ai/dashboard');
+      console.warn('   Dashboard features disabled. Get your API key at: https://app.deepsweep.ai');
     }
   } catch (error) {
     console.error('Failed to initialize DeepSweep telemetry:', error);
