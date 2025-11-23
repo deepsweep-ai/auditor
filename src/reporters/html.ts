@@ -260,7 +260,7 @@ const HTML_TEMPLATE = `
 
         <div class="footer">
             <p><strong>{{deepsweep_promo}}</strong></p>
-            <a href="https://deepsweep.ai" class="cta">Get DeepSweep.ai Protection</a>
+            <a href="https://deepsweep.ai/firewall?ref=cli&risk={{overall_risk}}&source=html-report" class="cta">Start Free Trial → DeepSweep Memory Firewall</a>
         </div>
     </div>
 </body>

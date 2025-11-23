@@ -1,6 +1,6 @@
 {
   "name": "@deepsweepai/auditor",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Free, zero-friction CLI that audits MCP servers for memory poisoning vulnerabilities in <30 seconds",
   "type": "module",
   "main": "./dist/index.js",
