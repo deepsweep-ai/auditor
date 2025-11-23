@@ -85,17 +85,16 @@ export function initTelemetry(enabled: boolean = true): void {
 
   // Check if API key is provided
   if (!DEEPSWEEP_API_KEY) {
-    console.warn(
-      '⚠️  DeepSweep telemetry enabled but no API key found. Set DEEPSWEEP_API_KEY environment variable.'
-    );
-    console.warn('   Get your API key at: https://deepsweep.ai/dashboard');
+    // Silently disable telemetry - API key is optional
+    // No warnings to avoid friction for first-time users
     telemetryEnabled = false;
     return;
   }
 
-  // Validate API key format
+  // Validate API key format (only warn if user provided an API key but it's invalid)
   if (!isValidApiKey(DEEPSWEEP_API_KEY)) {
     console.warn('⚠️  Invalid DeepSweep API key format. Expected: ds_prod_*, ds_biz_*, or ds_free_*');
+    console.warn('   Get your API key at: https://deepsweep.ai/dashboard');
     telemetryEnabled = false;
     return;
   }

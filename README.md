@@ -250,16 +250,18 @@ npx @deepsweepai/auditor audit --url http://localhost:8000
 
 ## 📊 Privacy & Telemetry
 
-DeepSweep.ai Auditor collects **opt-in usage data** to improve detection and provide security monitoring:
+**The auditor works perfectly fine without any API key or telemetry.**
+
+DeepSweep.ai Auditor includes **optional telemetry** that sends anonymized usage data to improve detection and provide security monitoring:
 
 - ✅ **Collected:** Risk scores, finding counts, compliance status, audit metadata
 - ❌ **Never collected:** MCP server URLs, prompts, memory content, user data, PII
 - 🔒 **Security:** Encrypted HTTPS transport, API key authentication, policy-based monitoring
 - 🚪 **Opt-out:** `--no-telemetry` or `DEEPSWEEP_TELEMETRY=off`
 
-### DeepSweep API Integration
+### DeepSweep API Integration (Optional)
 
-To enable telemetry with the DeepSweep platform:
+To **optionally** enable telemetry with the DeepSweep platform:
 
 1. **Get your API key** from the [DeepSweep Dashboard](https://deepsweep.ai/dashboard)
 
@@ -269,13 +271,13 @@ To enable telemetry with the DeepSweep platform:
 export DEEPSWEEP_API_KEY=ds_prod_a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
 ```
 
-3. **Run the auditor** (telemetry is enabled by default with a valid API key):
+3. **Run the auditor** (telemetry will activate automatically when a valid API key is detected):
 
 ```bash
 npx @deepsweepai/auditor audit --demo
 ```
 
-The auditor will send anonymized telemetry events to `api.deepsweep.ai` for:
+When enabled, the auditor will send anonymized telemetry events to `api.deepsweep.ai` for:
 - Real-time security monitoring
 - Policy evaluation (PII detection, prompt injection, blocked APIs)
 - Usage analytics and improvements
