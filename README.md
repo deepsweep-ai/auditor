@@ -250,18 +250,37 @@ npx @deepsweepai/auditor audit --url http://localhost:8000
 
 ## 📊 Privacy & Telemetry
 
-**The auditor works perfectly fine without any API key or telemetry.**
+**All security detection runs locally on your machine. The auditor works perfectly without any API key.**
 
-DeepSweep.ai Auditor includes **optional telemetry** that sends anonymized usage data to improve detection and provide security monitoring:
+### What Gets Detected (100% Free, Always Local)
 
-- ✅ **Collected:** Risk scores, finding counts, compliance status, audit metadata
-- ❌ **Never collected:** MCP server URLs, prompts, memory content, user data, PII
-- 🔒 **Security:** Encrypted HTTPS transport, API key authentication, policy-based monitoring
-- 🚪 **Opt-out:** `--no-telemetry` or `DEEPSWEEP_TELEMETRY=off`
+✅ **Memory Poisoning Detection** - Recursive patterns, semantic drift, malicious signatures
+✅ **PII Leakage Detection** - Emails, SSNs, credit cards, API keys
+✅ **Prompt Injection Patterns** - Jailbreaks, instruction overrides
+✅ **Tool Poisoning** - Suspicious parameters, broad permissions
+✅ **Compliance Mapping** - NIST AI RMF, ISO 42001, SOC 2, EU AI Act
+✅ **Risk Scoring** - 0-100 severity scores with actionable recommendations
 
-### DeepSweep API Integration (Optional)
+**All detection logic is built into the CLI. No API calls required for security analysis.**
 
-To **optionally** enable telemetry with the DeepSweep platform:
+### Two-Tier Telemetry System
+
+**Tier 1: Anonymous Telemetry (Default)**
+- 🆔 **Device ID**: Generated UUID stored in `~/.deepsweep/device-id`
+- 📊 **Collected**: Risk scores, finding counts, compliance metrics, timestamps
+- ❌ **Never collected**: MCP server URLs, prompts, memory content, PII, source code
+- 🔒 **Security**: Encrypted HTTPS to `api.deepsweep.ai/events/anonymous`
+- 🚪 **Opt-out**: `--no-telemetry` or `DEEPSWEEP_TELEMETRY=off`
+
+**Tier 2: Dashboard Integration (Optional - Requires API Key)**
+- 📈 **Audit History**: Store audit results in DeepSweep dashboard
+- 👥 **Team Collaboration**: Share findings across your organization
+- 📋 **Custom Policies**: Load project-specific rules from dashboard
+- 🔗 **Integrations**: Auto-create tickets, Slack alerts, CI/CD hooks
+
+**Important:** The API key unlocks **dashboard features**, not detection features. All security analysis happens locally.
+
+### Enable Dashboard Integration (Optional)
 
 1. **Get your API key** from the [DeepSweep Dashboard](https://deepsweep.ai/dashboard)
 
@@ -271,16 +290,13 @@ To **optionally** enable telemetry with the DeepSweep platform:
 export DEEPSWEEP_API_KEY=ds_prod_a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
 ```
 
-3. **Run the auditor** (telemetry will activate automatically when a valid API key is detected):
+3. **Run the auditor** (dashboard integration activates automatically):
 
 ```bash
 npx @deepsweepai/auditor audit --demo
+# → Same local detection + results stored in dashboard
+# → 📊 View audit in DeepSweep Dashboard: https://platform.deepsweep.ai/audits/abc123
 ```
-
-When enabled, the auditor will send anonymized telemetry events to `api.deepsweep.ai` for:
-- Real-time security monitoring
-- Policy evaluation (PII detection, prompt injection, blocked APIs)
-- Usage analytics and improvements
 
 **API Key Formats:**
 - Production: `ds_prod_*`
@@ -288,9 +304,14 @@ When enabled, the auditor will send anonymized telemetry events to `api.deepswee
 - Free tier: `ds_free_*`
 
 **Environment Variables:**
-- `DEEPSWEEP_API_KEY` - Your DeepSweep API key
+- `DEEPSWEEP_API_KEY` - Your DeepSweep API key (optional, for dashboard features)
 - `DEEPSWEEP_API_URL` - API base URL (default: `https://api.deepsweep.ai`)
-- `DEEPSWEEP_TELEMETRY` - Set to `off` or `false` to disable
+- `DEEPSWEEP_TELEMETRY` - Set to `off` or `false` to disable anonymous telemetry
+
+**Device ID Storage:**
+- Location: `~/.deepsweep/device-id`
+- Format: UUID v4 (e.g., `550e8400-e29b-41d4-a716-446655440000`)
+- Purpose: Anonymous usage tracking (no PII)
 
 [Privacy Policy](https://deepsweep.ai/privacy)
 
