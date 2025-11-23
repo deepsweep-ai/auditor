@@ -24,8 +24,18 @@ export function calculateRiskScore(
   // Weight: Critical = 40, High = 20, Medium = 10, Low = 5
   const weighted = criticalCount * 40 + highCount * 20 + mediumCount * 10 + lowCount * 5;
 
-  // Normalize to 0-100 scale (cap at 100)
-  return Math.min(100, weighted);
+  // Use asymptotic scaling to prevent early saturation
+  // Formula: score = 100 * (1 - e^(-weighted/threshold))
+  // This creates a curve that approaches 100 but provides better differentiation:
+  // - 1 critical (40) ≈ 20 points
+  // - 3 critical (120) ≈ 49 points
+  // - 5 critical (200) ≈ 67 points
+  // - 10 critical (400) ≈ 89 points
+  const threshold = 180;
+  const score = 100 * (1 - Math.exp(-weighted / threshold));
+
+  // Round to nearest integer and cap at 100
+  return Math.min(100, Math.round(score));
 }
 
 export function getRiskLevel(score: number): 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL' {
