@@ -5,7 +5,7 @@ import { getDeviceId } from './device-id.js';
 /**
  * DeepSweep API Configuration
  */
-const DEEPSWEEP_API_BASE_URL = process.env.DEEPSWEEP_API_URL || 'https://api.deepsweep.ai';
+const DEEPSWEEP_API_BASE_URL = process.env.DEEPSWEEP_API_URL || 'https://api.deepsweep.ai/v1';
 const DEEPSWEEP_API_KEY = process.env.DEEPSWEEP_API_KEY || '';
 
 /**
@@ -117,7 +117,7 @@ export function initTelemetry(enabled: boolean = true): void {
     } else if (DEEPSWEEP_API_KEY) {
       // User provided API key but it's invalid - show warning
       console.warn('⚠️  Invalid DeepSweep API key format. Expected: ds_prod_*, ds_biz_*, or ds_free_*');
-      console.warn('   Dashboard features disabled. Get your API key at: https://app.deepsweep.ai');
+      console.warn('   Dashboard features disabled. Get your API key at: https://platform.deepsweep.ai');
     }
   } catch (error) {
     console.error('Failed to initialize DeepSweep telemetry:', error);

@@ -269,7 +269,7 @@ npx @deepsweepai/auditor audit --url http://localhost:8000
 - 🆔 **Device ID**: Generated UUID stored in `~/.deepsweep/device-id`
 - 📊 **Collected**: Risk scores, finding counts, compliance metrics, timestamps
 - ❌ **Never collected**: MCP server URLs, prompts, memory content, PII, source code
-- 🔒 **Security**: Encrypted HTTPS to `api.deepsweep.ai/events/anonymous`
+- 🔒 **Security**: Encrypted HTTPS to `api.deepsweep.ai/v1/events/anonymous`
 - 🚪 **Opt-out**: `--no-telemetry` or `DEEPSWEEP_TELEMETRY=off`
 
 **Tier 2: Dashboard Integration (Optional - Requires API Key)**
@@ -282,7 +282,7 @@ npx @deepsweepai/auditor audit --url http://localhost:8000
 
 ### Enable Dashboard Integration (Optional)
 
-1. **Get your API key** from the [DeepSweep Dashboard](https://app.deepsweep.ai)
+1. **Get your API key** from the [DeepSweep Platform](https://platform.deepsweep.ai)
 
 2. **Set the API key** as an environment variable:
 
@@ -295,7 +295,7 @@ export DEEPSWEEP_API_KEY=ds_prod_a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
 ```bash
 npx @deepsweepai/auditor audit --demo
 # → Same local detection + results stored in dashboard
-# → 📊 View audit in DeepSweep Dashboard: https://app.deepsweep.ai/audits/abc123
+# → 📊 View audit in DeepSweep Platform: https://platform.deepsweep.ai/audits/abc123
 ```
 
 **API Key Formats:**
@@ -305,7 +305,7 @@ npx @deepsweepai/auditor audit --demo
 
 **Environment Variables:**
 - `DEEPSWEEP_API_KEY` - Your DeepSweep API key (optional, for dashboard features)
-- `DEEPSWEEP_API_URL` - API base URL (default: `https://api.deepsweep.ai`)
+- `DEEPSWEEP_API_URL` - API base URL (default: `https://api.deepsweep.ai/v1`)
 - `DEEPSWEEP_TELEMETRY` - Set to `off` or `false` to disable anonymous telemetry
 
 **Device ID Storage:**
