@@ -3,8 +3,11 @@
 [![npm version](https://img.shields.io/npm/v/@deepsweepai/auditor.svg)](https://www.npmjs.com/package/@deepsweepai/auditor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Node.js >= 18](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
+[![Built in USA](https://img.shields.io/badge/Built%20in-USA-blue.svg)](https://deepsweep.ai)
 
 **Free, zero-friction CLI that audits MCP servers for memory poisoning vulnerabilities in <30 seconds.**
+
+🇺🇸 **US-based security platform** • Enterprise-grade protection for AI agents
 
 > "We Audited 50 Public MCP Servers. 94% Are Critically Vulnerable to Memory Poisoning."
 

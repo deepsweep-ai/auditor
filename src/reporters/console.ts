@@ -95,7 +95,7 @@ export function generateConsoleReport(report: AuditReport): string {
     lines.push('');
     lines.push(chalk.cyan(`   Start free trial → https://deepsweep.ai/firewall?ref=cli&risk=${riskLevel}&findings=${criticalCount}`));
     lines.push('');
-    lines.push(chalk.gray('   Trusted by security teams protecting production AI agents'));
+    lines.push(chalk.gray('   Trusted by US security teams protecting production AI agents • Built in America'));
   } else {
     lines.push('');
     lines.push(chalk.bold('🛡️  Prevent these attacks with DeepSweep Memory Firewall'));
