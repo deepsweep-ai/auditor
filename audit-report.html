@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeepSweep.ai Audit Report - audit_1763835715171_59da8fa3dff9c271</title>
+    <title>DeepSweep.ai Audit Report - audit_1763934610878_600c938b8e2de97d</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -167,8 +167,51 @@
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
     </style>
+
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLEYLBCSB9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        // Configure GA4 with custom dimensions
+        gtag('config', 'G-JLEYLBCSB9', {
+            'custom_map': {
+                'dimension1': 'risk_level',
+                'dimension2': 'findings_count',
+                'dimension3': 'report_source'
+            }
+        });
+
+        // Track report viewed event
+        gtag('event', 'report_viewed', {
+            'risk_level': 'CRITICAL',
+            'findings_count': 29,
+            'critical_findings': 16,
+            'report_source': 'html_export'
+        });
+    </script>
 </head>
 <body>
+    <!-- CTA Click Tracking -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track CTA button clicks
+            const ctaButton = document.querySelector('.footer .cta');
+            if (ctaButton) {
+                ctaButton.addEventListener('click', function(e) {
+                    gtag('event', 'cta_click', {
+                        'risk_level': 'CRITICAL',
+                        'button_text': e.target.innerText,
+                        'destination_url': e.target.href,
+                        'event_category': 'conversion',
+                        'event_label': 'firewall_cta'
+                    });
+                });
+            }
+        });
+    </script>
     <div class="container">
         <div class="header">
             <h1>DeepSweep.ai Auditor Report</h1>
@@ -198,8 +241,8 @@
             <div class="section">
                 <h2>Audit Information</h2>
                 <p><strong>Server:</strong> demo://vulnerable-mcp-server</p>
-                <p><strong>Audit ID:</strong> audit_1763835715171_59da8fa3dff9c271</p>
-                <p><strong>Timestamp:</strong> 2025-11-22T18:21:55.171Z</p>
+                <p><strong>Audit ID:</strong> audit_1763934610878_600c938b8e2de97d</p>
+                <p><strong>Timestamp:</strong> 2025-11-23T21:50:10.878Z</p>
                 <p><strong>Memory Poisoning:</strong> <span style="color: #dc3545;">DETECTED</span></p>
                 <p><strong>Tool Poisoning:</strong> <span style="color: #dc3545;">DETECTED</span></p>
             </div>
@@ -331,15 +374,16 @@
                 <div class="recommendations">
                     <ul>
                         <li>This is a demo report showing vulnerabilities in a simulated MCP server</li>
-                        <li>Deploy DeepSweep.ai Memory Firewall for real-time protection → https://deepsweep.ai</li>
+                        <li>Deploy DeepSweep Memory Firewall for real-time protection across any AI framework → https://deepsweep.ai/firewall?ref&#x3D;cli&amp;risk&#x3D;critical&amp;findings&#x3D;16&amp;source&#x3D;demo</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="footer">
-            <p><strong>Prevent these attacks automatically → https://deepsweep.ai</strong></p>
-            <a href="https://deepsweep.ai" class="cta">Get DeepSweep.ai Protection</a>
+            <p><strong>Prevent these attacks automatically → https://deepsweep.ai/firewall?ref&#x3D;cli&amp;risk&#x3D;critical&amp;source&#x3D;demo</strong></p>
+            <a href="https://deepsweep.ai/firewall?ref=cli&risk=CRITICAL&source=html-report" class="cta">Start Free Trial → DeepSweep Memory Firewall</a>
+            <p style="margin-top: 20px; font-size: 12px; color: #666;">🇺🇸 US-based security platform • Built in America • Enterprise-grade protection</p>
         </div>
     </div>
 </body>
