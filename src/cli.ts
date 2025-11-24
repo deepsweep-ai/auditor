@@ -17,7 +17,7 @@ const program = new Command();
 program
   .name('deepsweepai')
   .description('DeepSweep.ai Auditor - MCP Server Security Scanner')
-  .version('0.2.0');
+  .version('0.3.0');
 
 program
   .command('audit')
@@ -80,7 +80,7 @@ program
       initTelemetry(options.telemetry !== false);
       await trackCLICommand('audit', options);
 
-      console.log('🔍 DeepSweep.ai Auditor v0.2.0 - Scanning MCP Server...\n');
+      console.log('🔍 DeepSweep.ai Auditor v0.3.0 - Scanning MCP Server...\n');
 
       let report;
 
@@ -120,7 +120,7 @@ program
 
         report = {
           audit_id: generateAuditId(),
-          version: '0.2.0',
+          version: '0.3.0',
           timestamp: new Date().toISOString(),
           mcp_server_url: 'demo://vulnerable-mcp-server',
           overall_risk: overallRisk,

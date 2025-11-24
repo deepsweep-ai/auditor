@@ -7,7 +7,7 @@ export function generateConsoleReport(report: AuditReport): string {
   // Header
   lines.push('');
   lines.push(chalk.bold.cyan('═══════════════════════════════════════════════════════'));
-  lines.push(chalk.bold.cyan('    DeepSweep.ai Auditor v0.2.0 - MCP Security Audit'));
+  lines.push(chalk.bold.cyan('    DeepSweep.ai Auditor v0.3.0 - MCP Security Audit'));
   lines.push(chalk.bold.cyan('═══════════════════════════════════════════════════════'));
   lines.push('');
 
