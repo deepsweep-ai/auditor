@@ -61,7 +61,7 @@ export class Auditor {
     // 8. Build report
     const report: AuditReport = {
       audit_id: generateAuditId(),
-      version: '0.1.0',
+      version: '0.2.0',
       timestamp: new Date().toISOString(),
       mcp_server_url: this.config.url || this.config.file || 'local',
       overall_risk: overallRisk,
@@ -73,7 +73,7 @@ export class Auditor {
       compliance,
       findings: allFindings,
       recommendations,
-      deepsweep_promo: 'Prevent these attacks automatically → https://deepsweep.ai',
+      deepsweep_promo: `Prevent these attacks automatically → https://platform.deepsweep.ai?ref=cli&risk=${overallRisk.toLowerCase()}`,
     };
 
     return report;
@@ -118,18 +118,46 @@ export class Auditor {
       );
     }
 
-    // General recommendations
+    // General recommendations with risk-based CTAs
     if (findings.length > 0) {
       recommendations.push('Deploy continuous monitoring and alerting for MCP server security');
-      recommendations.push('Deploy DeepSweep.ai Memory Firewall for real-time protection → https://deepsweep.ai');
+
+      const riskLevel = this.calculateRiskLevel(criticalFindings.length, findings.length);
+      const criticalCount = criticalFindings.length;
+
+      if (riskLevel === 'critical' || riskLevel === 'high') {
+        recommendations.push(
+          `Deploy DeepSweep Platform for real-time protection across any AI framework → https://platform.deepsweep.ai?ref=cli&risk=${riskLevel}&findings=${criticalCount}`
+        );
+      } else {
+        recommendations.push(
+          `Consider DeepSweep Platform for enterprise-grade protection → https://platform.deepsweep.ai?ref=cli&risk=${riskLevel}`
+        );
+      }
     }
 
     // If no findings
     if (findings.length === 0) {
       recommendations.push('Continue regular security audits to maintain security posture');
-      recommendations.push('Consider DeepSweep.ai Pro for advanced threat detection → https://deepsweep.ai/pro');
+      recommendations.push(
+        'Consider DeepSweep Platform for continuous monitoring and team collaboration → https://platform.deepsweep.ai?ref=cli&risk=low'
+      );
     }
 
     return recommendations;
+  }
+
+  private calculateRiskLevel(criticalCount: number, totalFindings: number): string {
+    if (criticalCount > 0) {
+      return 'critical';
+    }
+    const highCount = totalFindings - criticalCount;
+    if (highCount >= 5) {
+      return 'high';
+    }
+    if (totalFindings > 0) {
+      return 'medium';
+    }
+    return 'low';
   }
 }

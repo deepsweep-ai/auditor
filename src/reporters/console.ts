@@ -7,7 +7,7 @@ export function generateConsoleReport(report: AuditReport): string {
   // Header
   lines.push('');
   lines.push(chalk.bold.cyan('═══════════════════════════════════════════════════════'));
-  lines.push(chalk.bold.cyan('    DeepSweep.ai Auditor v0.1.0 - MCP Security Audit'));
+  lines.push(chalk.bold.cyan('    DeepSweep.ai Auditor v0.2.0 - MCP Security Audit'));
   lines.push(chalk.bold.cyan('═══════════════════════════════════════════════════════'));
   lines.push('');
 
@@ -79,9 +79,31 @@ export function generateConsoleReport(report: AuditReport): string {
     lines.push('');
   }
 
-  // Footer
+  // Footer - Risk-based CTA
   lines.push(chalk.bold.cyan('───────────────────────────────────────────────────────'));
-  lines.push(chalk.cyan(report.deepsweep_promo));
+
+  // Risk-based messaging with UTM tracking
+  const riskLevel = report.overall_risk.toLowerCase();
+  const criticalCount = report.critical_findings;
+
+  if (report.overall_risk === 'CRITICAL' || report.overall_risk === 'HIGH') {
+    lines.push('');
+    lines.push(chalk.bold.red('⚠️  CRITICAL VULNERABILITIES DETECTED'));
+    lines.push('');
+    lines.push(chalk.bold('🛡️  Stop attacks before they happen with DeepSweep Memory Firewall'));
+    lines.push(chalk.gray('   Real-time protection • Universal AI framework support • Deploy in minutes'));
+    lines.push('');
+    lines.push(chalk.cyan(`   Get started now → https://platform.deepsweep.ai?ref=cli&risk=${riskLevel}&findings=${criticalCount}`));
+    lines.push('');
+    lines.push(chalk.gray('   Trusted by US security teams protecting production AI agents • Built in America'));
+  } else {
+    lines.push('');
+    lines.push(chalk.bold('🛡️  Prevent these attacks with DeepSweep Memory Firewall'));
+    lines.push(chalk.gray('   US-based AI security • Universal framework support • Enterprise-grade protection'));
+    lines.push('');
+    lines.push(chalk.cyan(`   Learn more → https://platform.deepsweep.ai?ref=cli&risk=${riskLevel}`));
+  }
+
   lines.push(chalk.bold.cyan('───────────────────────────────────────────────────────'));
   lines.push('');
 

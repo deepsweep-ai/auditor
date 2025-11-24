@@ -3,8 +3,11 @@
 [![npm version](https://img.shields.io/npm/v/@deepsweepai/auditor.svg)](https://www.npmjs.com/package/@deepsweepai/auditor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Node.js >= 18](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
+[![Built in USA](https://img.shields.io/badge/Built%20in-USA-blue.svg)](https://deepsweep.ai)
 
 **Free, zero-friction CLI that audits MCP servers for memory poisoning vulnerabilities in <30 seconds.**
+
+🇺🇸 **US-based security platform** • Enterprise-grade protection for AI agents
 
 > "We Audited 50 Public MCP Servers. 94% Are Critically Vulnerable to Memory Poisoning."
 
@@ -50,6 +53,30 @@ npx @deepsweepai/auditor audit --docker
 npx @deepsweepai/auditor audit --url https://mcp.example.com --api-key YOUR_KEY
 npx @deepsweepai/auditor audit --url https://mcp.example.com --bearer-token YOUR_TOKEN
 ```
+
+## 🎯 User Journey
+
+**1. Run Audit (30 seconds)**
+```bash
+npx @deepsweepai/auditor audit --demo
+```
+
+**2. View Detailed Report**
+- Open `audit-report.html` in your browser
+- Review findings, risk scores, and compliance status
+- Forward to security teams or CISOs
+
+**3. Get Continuous Protection** _(Recommended for Critical/High Risk)_
+- Visit [DeepSweep Platform](https://platform.deepsweep.ai)
+- Create your account and get started
+- Deploy real-time memory firewall across all AI agents
+
+**4. Dashboard Integration** _(Optional)_
+- Get API key from [Platform Dashboard](https://platform.deepsweep.ai)
+- Set `DEEPSWEEP_API_KEY` environment variable
+- View audit history, team collaboration, custom policies
+
+**All security detection runs locally. No API key required for audits.**
 
 ## 📊 Example Output
 
@@ -250,12 +277,68 @@ npx @deepsweepai/auditor audit --url http://localhost:8000
 
 ## 📊 Privacy & Telemetry
 
-DeepSweep.ai Auditor collects **anonymous usage data** to improve detection:
+**All security detection runs locally on your machine. The auditor works perfectly without any API key.**
 
-- ✅ **Collected:** Risk scores, finding counts, compliance status
-- ❌ **Never collected:** URLs, prompts, memory content, user data
-- 🔒 **Security:** Encrypted transport, no PII
-- 🚪 **Opt-out:** `--no-telemetry` or `DEEPSWEEP_TELEMETRY=off`
+### What Gets Detected (100% Free, Always Local)
+
+✅ **Memory Poisoning Detection** - Recursive patterns, semantic drift, malicious signatures
+✅ **PII Leakage Detection** - Emails, SSNs, credit cards, API keys
+✅ **Prompt Injection Patterns** - Jailbreaks, instruction overrides
+✅ **Tool Poisoning** - Suspicious parameters, broad permissions
+✅ **Compliance Mapping** - NIST AI RMF, ISO 42001, SOC 2, EU AI Act
+✅ **Risk Scoring** - 0-100 severity scores with actionable recommendations
+
+**All detection logic is built into the CLI. No API calls required for security analysis.**
+
+### Two-Tier Telemetry System
+
+**Tier 1: Anonymous Telemetry (Default)**
+- 🆔 **Device ID**: Generated UUID stored in `~/.deepsweep/device-id`
+- 📊 **Collected**: Risk scores, finding counts, compliance metrics, timestamps
+- ❌ **Never collected**: MCP server URLs, prompts, memory content, PII, source code
+- 🔒 **Security**: Encrypted HTTPS to `api.deepsweep.ai/v1/events/anonymous`
+- 🚪 **Opt-out**: `--no-telemetry` or `DEEPSWEEP_TELEMETRY=off`
+
+**Tier 2: Dashboard Integration (Optional - Requires API Key)**
+- 📈 **Audit History**: Store audit results in DeepSweep dashboard
+- 👥 **Team Collaboration**: Share findings across your organization
+- 📋 **Custom Policies**: Load project-specific rules from dashboard
+- 🔗 **Integrations**: Auto-create tickets, Slack alerts, CI/CD hooks
+
+**Important:** The API key unlocks **dashboard features**, not detection features. All security analysis happens locally.
+
+### Enable Dashboard Integration (Optional)
+
+1. **Get your API key** from the [DeepSweep Platform](https://platform.deepsweep.ai)
+
+2. **Set the API key** as an environment variable:
+
+```bash
+export DEEPSWEEP_API_KEY=ds_prod_a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
+```
+
+3. **Run the auditor** (dashboard integration activates automatically):
+
+```bash
+npx @deepsweepai/auditor audit --demo
+# → Same local detection + results stored in dashboard
+# → 📊 View audit in DeepSweep Platform: https://platform.deepsweep.ai/audits/abc123
+```
+
+**API Key Formats:**
+- Production: `ds_prod_*`
+- Business: `ds_biz_*`
+- Free tier: `ds_free_*`
+
+**Environment Variables:**
+- `DEEPSWEEP_API_KEY` - Your DeepSweep API key (optional, for dashboard features)
+- `DEEPSWEEP_API_URL` - API base URL (default: `https://api.deepsweep.ai/v1`)
+- `DEEPSWEEP_TELEMETRY` - Set to `off` or `false` to disable anonymous telemetry
+
+**Device ID Storage:**
+- Location: `~/.deepsweep/device-id`
+- Format: UUID v4 (e.g., `550e8400-e29b-41d4-a716-446655440000`)
+- Purpose: Anonymous usage tracking (no PII)
 
 [Privacy Policy](https://deepsweep.ai/privacy)
 

@@ -1,7 +1,7 @@
 {
   "name": "@deepsweepai/auditor",
-  "version": "0.1.1",
-  "description": "Free, zero-friction CLI that audits MCP servers for memory poisoning vulnerabilities in <30 seconds",
+  "version": "0.2.0",
+  "description": "Free, zero-friction CLI that audits MCP servers for memory poisoning vulnerabilities in <30 seconds. US-based security platform.",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -55,7 +55,6 @@
     "commander": "^11.1.0",
     "handlebars": "^4.7.8",
     "pdf-lib": "^1.17.1",
-    "posthog-node": "^4.0.1",
     "ws": "^8.16.0"
   },
   "devDependencies": {

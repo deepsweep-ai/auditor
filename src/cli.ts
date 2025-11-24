@@ -17,7 +17,7 @@ const program = new Command();
 program
   .name('deepsweepai')
   .description('DeepSweep.ai Auditor - MCP Server Security Scanner')
-  .version('0.1.0');
+  .version('0.2.0');
 
 program
   .command('audit')
@@ -40,7 +40,7 @@ program
       initTelemetry(options.telemetry !== false);
       await trackCLICommand('audit', options);
 
-      console.log('🔍 DeepSweep.ai Auditor v0.1.0 - Scanning MCP Server...\n');
+      console.log('🔍 DeepSweep.ai Auditor v0.2.0 - Scanning MCP Server...\n');
 
       let report;
 
@@ -80,7 +80,7 @@ program
 
         report = {
           audit_id: generateAuditId(),
-          version: '0.1.0',
+          version: '0.2.0',
           timestamp: new Date().toISOString(),
           mcp_server_url: 'demo://vulnerable-mcp-server',
           overall_risk: overallRisk,
@@ -93,9 +93,9 @@ program
           findings: allFindings,
           recommendations: [
             'This is a demo report showing vulnerabilities in a simulated MCP server',
-            'Deploy DeepSweep.ai Memory Firewall for real-time protection → https://deepsweep.ai',
+            `Deploy DeepSweep Platform for real-time protection across any AI framework → https://platform.deepsweep.ai?ref=cli&risk=${overallRisk.toLowerCase()}&findings=${criticalCount}&source=demo`,
           ],
-          deepsweep_promo: 'Prevent these attacks automatically → https://deepsweep.ai',
+          deepsweep_promo: `Prevent these attacks automatically → https://platform.deepsweep.ai?ref=cli&risk=${overallRisk.toLowerCase()}&source=demo`,
         };
       } else {
         // Normal audit mode
@@ -139,11 +139,13 @@ program
       }
 
       // Generate HTML report
+      let htmlGenerated = false;
       if (options.html || (!options.json && !options.pdf)) {
         // Default to HTML if no format specified
         const htmlPath = join(outputDir, 'audit-report.html');
         await generateHTMLReport(report, htmlPath);
         console.log(`📄 HTML report saved: ${htmlPath}`);
+        htmlGenerated = true;
       }
 
       // Generate PDF report
@@ -159,6 +161,24 @@ program
         const shareUrl = await shareReport(report);
         console.log(`✅ Report shared: ${shareUrl}`);
       }
+
+      // Next steps guidance
+      console.log('\n📋 Next Steps:');
+      if (htmlGenerated) {
+        console.log('   1. Open audit-report.html in your browser to view the detailed report');
+      }
+
+      if (report.overall_risk === 'CRITICAL' || report.critical_findings > 0) {
+        console.log('   2. Address critical vulnerabilities before production deployment');
+        console.log('   3. Get real-time protection → https://platform.deepsweep.ai?ref=cli-nextsteps');
+        console.log('      • Stop attacks before they happen');
+        console.log('      • Continuous monitoring across all AI agents');
+        console.log('      • Get API key for dashboard integration');
+      } else {
+        console.log('   2. Run regular security audits to maintain security posture');
+        console.log('   3. Consider continuous monitoring → https://platform.deepsweep.ai?ref=cli-nextsteps');
+      }
+      console.log('');
 
       // Exit with appropriate code
       const exitCode = report.overall_risk === 'CRITICAL' || report.critical_findings > 0 ? 1 : 0;
