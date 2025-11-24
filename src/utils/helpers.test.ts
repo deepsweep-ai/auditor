@@ -3,16 +3,27 @@ import { calculateRiskScore, getRiskLevel, generateAuditId, generateFindingId } 
 
 describe('helpers', () => {
   describe('calculateRiskScore', () => {
-    it('should calculate risk score correctly', () => {
-      expect(calculateRiskScore(1, 0, 0, 0)).toBe(40);
-      expect(calculateRiskScore(0, 1, 0, 0)).toBe(20);
-      expect(calculateRiskScore(0, 0, 1, 0)).toBe(10);
-      expect(calculateRiskScore(0, 0, 0, 1)).toBe(5);
-      expect(calculateRiskScore(1, 1, 1, 1)).toBe(75);
+    it('should calculate risk score with asymptotic scaling', () => {
+      // New asymptotic formula: score = 100 * (1 - e^(-weighted/180))
+      // This prevents early saturation and provides better differentiation
+      expect(calculateRiskScore(1, 0, 0, 0)).toBe(20); // 1 critical ≈ 20 points
+      expect(calculateRiskScore(0, 1, 0, 0)).toBe(11); // 1 high ≈ 11 points
+      expect(calculateRiskScore(0, 0, 1, 0)).toBe(5);  // 1 medium ≈ 5 points
+      expect(calculateRiskScore(0, 0, 0, 1)).toBe(3);  // 1 low ≈ 3 points
+      expect(calculateRiskScore(1, 1, 1, 1)).toBe(34); // Mixed severity ≈ 34 points
     });
 
-    it('should cap risk score at 100', () => {
-      expect(calculateRiskScore(10, 10, 10, 10)).toBe(100);
+    it('should approach but not easily reach 100', () => {
+      // With many findings, score approaches 100 asymptotically
+      expect(calculateRiskScore(10, 10, 10, 10)).toBe(98); // Heavy findings ≈ 98 points
+      expect(calculateRiskScore(20, 0, 0, 0)).toBe(99); // 20 critical ≈ 99 points
+    });
+
+    it('should provide better differentiation for critical findings', () => {
+      // Verify the curve provides good differentiation across severity levels
+      expect(calculateRiskScore(3, 0, 0, 0)).toBe(49);  // 3 critical ≈ 49 points (MEDIUM/HIGH boundary)
+      expect(calculateRiskScore(5, 0, 0, 0)).toBe(67);  // 5 critical ≈ 67 points (HIGH)
+      expect(calculateRiskScore(10, 0, 0, 0)).toBe(89); // 10 critical ≈ 89 points (CRITICAL)
     });
   });
 
