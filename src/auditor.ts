@@ -61,7 +61,7 @@ export class Auditor {
     // 8. Build report
     const report: AuditReport = {
       audit_id: generateAuditId(),
-      version: '0.2.0',
+      version: '0.3.0',
       timestamp: new Date().toISOString(),
       mcp_server_url: this.config.url || this.config.file || 'local',
       overall_risk: overallRisk,

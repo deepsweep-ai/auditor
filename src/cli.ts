@@ -17,7 +17,7 @@ const program = new Command();
 program
   .name('deepsweepai')
   .description('DeepSweep.ai Auditor - MCP Server Security Scanner')
-  .version('0.2.0');
+  .version('0.3.0');
 
 program
   .command('audit')
@@ -34,13 +34,53 @@ program
   .option('--share', 'Share anonymized report to deepsweep.ai', false)
   .option('--demo', 'Run in demo mode with a known-vulnerable MCP server', false)
   .option('--no-telemetry', 'Disable anonymous telemetry', false)
+  .option('--offline', 'Run in offline mode (no network calls, implies --no-telemetry)', false)
   .action(async (options) => {
     try {
+      // Handle offline mode
+      if (options.offline) {
+        // Offline mode implies no telemetry
+        options.telemetry = false;
+
+        // Validate offline mode constraints
+        if (options.url) {
+          console.error('❌ Error: --url cannot be used in offline mode (requires network connection)');
+          console.log('\nOffline mode only supports:');
+          console.log('  deepsweepai audit --offline --file session.json');
+          console.log('  deepsweepai audit --offline --demo');
+          process.exit(1);
+        }
+
+        if (options.share) {
+          console.error('❌ Error: --share cannot be used in offline mode (requires network connection)');
+          process.exit(1);
+        }
+
+        if (options.docker) {
+          console.error('❌ Error: --docker cannot be used in offline mode (may require network connection)');
+          console.log('\nOffline mode only supports:');
+          console.log('  deepsweepai audit --offline --file session.json');
+          console.log('  deepsweepai audit --offline --demo');
+          process.exit(1);
+        }
+
+        // Require --file or --demo in offline mode
+        if (!options.file && !options.demo) {
+          console.error('❌ Error: Offline mode requires either --file or --demo');
+          console.log('\nOffline mode usage:');
+          console.log('  deepsweepai audit --offline --file session.json');
+          console.log('  deepsweepai audit --offline --demo');
+          process.exit(1);
+        }
+
+        console.log('🔌 Running in OFFLINE mode (no network calls will be made)\n');
+      }
+
       // Initialize telemetry
       initTelemetry(options.telemetry !== false);
       await trackCLICommand('audit', options);
 
-      console.log('🔍 DeepSweep.ai Auditor v0.2.0 - Scanning MCP Server...\n');
+      console.log('🔍 DeepSweep.ai Auditor v0.3.0 - Scanning MCP Server...\n');
 
       let report;
 
@@ -80,7 +120,7 @@ program
 
         report = {
           audit_id: generateAuditId(),
-          version: '0.2.0',
+          version: '0.3.0',
           timestamp: new Date().toISOString(),
           mcp_server_url: 'demo://vulnerable-mcp-server',
           overall_risk: overallRisk,
@@ -155,8 +195,8 @@ program
         console.log(`📄 PDF report saved: ${pdfPath}`);
       }
 
-      // Share report if requested
-      if (options.share) {
+      // Share report if requested (skip in offline mode)
+      if (options.share && !options.offline) {
         console.log('\n🔗 Sharing anonymized report...');
         const shareUrl = await shareReport(report);
         console.log(`✅ Report shared: ${shareUrl}`);

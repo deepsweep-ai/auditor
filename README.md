@@ -54,6 +54,25 @@ npx @deepsweepai/auditor audit --url https://mcp.example.com --api-key YOUR_KEY
 npx @deepsweepai/auditor audit --url https://mcp.example.com --bearer-token YOUR_TOKEN
 ```
 
+### Offline Mode
+
+Run audits without any network calls (perfect for air-gapped environments):
+
+```bash
+# Offline demo mode
+npx @deepsweepai/auditor audit --offline --demo
+
+# Offline with session file
+npx @deepsweepai/auditor audit --offline --file session.json
+```
+
+**Offline mode:**
+- ✅ No telemetry or analytics
+- ✅ No external API calls
+- ✅ Works in air-gapped environments
+- ✅ All detection runs locally
+- ❌ Cannot use `--url`, `--docker`, or `--share`
+
 ## 🎯 User Journey
 
 **1. Run Audit (30 seconds)**
@@ -234,6 +253,7 @@ dsauditor audit [options]
 - `--share` - Share anonymized report to deepsweep.ai
 - `--demo` - Run demo mode with vulnerable MCP server
 - `--no-telemetry` - Disable anonymous telemetry
+- `--offline` - Run in offline mode (no network calls, implies --no-telemetry)
 
 ### Exit Codes
 
