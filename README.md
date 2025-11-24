@@ -68,7 +68,7 @@ npx @deepsweepai/auditor audit --demo
 
 **3. Get Continuous Protection** _(Recommended for Critical/High Risk)_
 - Visit [DeepSweep Platform](https://platform.deepsweep.ai)
-- Sign up for free trial
+- Create your account and get started
 - Deploy real-time memory firewall across all AI agents
 
 **4. Dashboard Integration** _(Optional)_

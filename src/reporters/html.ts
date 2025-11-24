@@ -303,7 +303,7 @@ const HTML_TEMPLATE = `
 
         <div class="footer">
             <p><strong>{{deepsweep_promo}}</strong></p>
-            <a href="https://platform.deepsweep.ai?ref=cli&risk={{overall_risk}}&source=html-report" class="cta">Start Free Trial → DeepSweep Platform</a>
+            <a href="https://platform.deepsweep.ai?ref=cli&risk={{overall_risk}}&source=html-report" class="cta">Get Started Now → DeepSweep Platform</a>
             <p style="margin-top: 20px; font-size: 12px; color: #666;">🇺🇸 US-based security platform • Built in America • Enterprise-grade protection</p>
         </div>
     </div>
